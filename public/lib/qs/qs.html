@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8>
+<meta name=description content="">
+<meta name=viewport content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript" src="qs.min.js"></script>
+<script type="text/javascript">
+document.body.innerHTML += Qs.stringify({a:1,b:2});
+document.body.innerHTML += "<br/>";
+document.body.innerHTML += JSON.stringify(Qs.parse("a=1&b=2"));
+document.body.innerHTML += "<br/>";
+
+</script>

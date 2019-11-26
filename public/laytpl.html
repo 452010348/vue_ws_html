@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="layui-src/css/layui.css">
+  <script type="text/javascript" src="lib/layui-src/layui.all.js"></script>
+</head>
+<body>
+
+
+<script id="page-demo" type="text/html">
+  <h3>{{ d.title }}</h3>
+</script>
+
+
+<div id="view"></div>
+
+
+<script type="text/javascript">
+
+  var data = {title:"你好呀！"}
+  page_demo(data);
+  setTimeout(function(){
+    var data = {title:"不好！"}
+    page_demo(data);
+  },3000)
+  function page_demo(data){
+    layui.laytpl( layui.jquery("#page-demo").html() ).render(data, function(html){
+      document.querySelector("#view").innerHTML = html;
+    });
+  }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="">
+	
+</head>
+
+<body>
+	<div id="app">
+    <div>
+        {{title}}
+    </div>
+    <div>
+      {{$store.state}}
+    </div>
+    <div>
+      <router-link to="/foo">路由测试 Foo</router-link>
+      <router-link to="/bar">路由测试 Bar</router-link>
+      <router-view></router-view>
+    </div>
+    <page-login></page-login>
+	</div>
+</body>
+
+</html>
+
+<script id="page-login" type="text/html">
+	<div>{{msg}}</div>
+</script>
+
+
+
+<script src="./js/page.js"></script>
+<script src="./js/page/login.js"></script>
+
+
+<script src="./lib/vue.min.js"></script>
+<script src="./lib/vue-router.min.js"></script>
+<script src="./lib/vuex.min.js"></script>
+<script src="./lib/axios.min.js"></script>
+<script src="./lib/qs/qs.min.js"></script>
+<script src="./js/store.js"></script>
+<script src="./js/router.js"></script>
+<script src="./js/filters.js"></script>
+<script src="./js/commonFn.js"></script>
+
+<script>
+// Vue.use(Element, {
+//   size: Cookies.get('size') || 'medium', // set element-ui default size
+//   i18n: (key, value) => i18n.t(key, value)
+// })
+Vue.config.productionTip = false
+Vue.prototype.axios = axios
+Object.keys(filters).forEach(function(key){
+  Vue.filter(key, filters[key])
+  Vue.prototype[key] = filters[key]
+})
+Object.keys(page).forEach(function(key){
+  var name = page[key].name;
+  var data = page[key]
+  Vue.component(name, data);
+})
+
+var $this = new Vue({
+  el: '#app',
+  components: {},
+  directives: {},
+  filters: {},
+  computed: {},
+  watch: {},
+  router: router,
+  store: store,
+  data: function(){
+    return {
+      title:"Vue"
+    }
+  } ,
+  methods: {
+  },
+  // // render: h => h(App)
+  created: function () {
+		console.log(this)
+  },
+})
+</script>
